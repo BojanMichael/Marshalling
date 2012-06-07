@@ -9,13 +9,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TimeUnits {
 
-	private List<TimeUnit> timeUnitList = new ArrayList<>();
+	private List<TimeUnit> timeUnitList = new ArrayList<TimeUnit>();
 	
 	public TimeUnits()
 	{
 	}
 	
-	public List<TimeUnit> getTimeUnitList() {
+	public List<TimeUnit> getTimeUnitList() 
+	{
 		return timeUnitList;
 	}
 

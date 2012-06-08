@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
 import javax.xml.bind.JAXBException;
+
+import language.LanguageHandler;
+
 import org.junit.Test;
 
 
@@ -41,10 +44,11 @@ public class XMLTester
 	public void marshal() 
 	{
 		TimeUnits tUList = new TimeUnits();
-		tUList.add(new TimeUnit("km", 1000, false, "Kilometer"));
-		tUList.add(new TimeUnit("m", 1, true, "Meter"));
-		tUList.add(new TimeUnit("dm", 0.1, false, "Dezimeter"));
-		tUList.add(new TimeUnit("cm", 0.01, false, "Centimeter"));
+		
+		tUList.add(new TimeUnit("km", 1000, false, "Kilometer", new LanguageHandler[]{new LanguageHandler("german", "km", "Kilometer"), new LanguageHandler("english", "km", "kilometer")}));
+		tUList.add(new TimeUnit("m", 1, true, "Meter",  new LanguageHandler[]{new LanguageHandler("german", "m", "Meter"), new LanguageHandler("english", "m", "meter")}));
+//		tUList.add(new TimeUnit("dm", 0.1, false, "Dezimeter"));
+//		tUList.add(new TimeUnit("cm", 0.01, false, "Centimeter"));
 
 		String fileOutString = "";
 		byte [] array;

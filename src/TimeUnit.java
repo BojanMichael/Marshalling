@@ -23,24 +23,30 @@ public class TimeUnit implements LengthUnit
 	@XmlElement(name="is_si_unit", nillable=true, required=true)
 	private boolean IS_SI_UNIT;
 	
+	@XmlElement(name="languageHandlerList")
 	private ArrayList<LanguageHandler> languageHandlerList = new ArrayList<LanguageHandler>();
 	
 	
-	public TimeUnit(String unitLabel,double factorToSIUnit, boolean isSi)
+	public TimeUnit(String unitLabel, double factorToSIUnit, boolean isSi)
 	{
 		this.UNIT_LABEL=unitLabel;
 		this.FACTOR_TO_SI_UNIT=factorToSIUnit;
 		this.IS_SI_UNIT = isSi;
 	}
 	
-	public TimeUnit(String unitLabel,double factorToSIUnit, boolean isSi, String unitName, LanguageHandler[] languageSet)
+	public TimeUnit(String unitLabel, double factorToSIUnit, boolean isSi, LanguageHandler[] languageSet)
 	{
 		this.UNIT_LABEL=unitLabel;
 		this.FACTOR_TO_SI_UNIT=factorToSIUnit;
-		this.UNIT_NAME=unitName;
 		this.IS_SI_UNIT = isSi;
 		
 		fillLanguageSet(languageSet);
+	}
+	
+	@SuppressWarnings("unused")
+	private TimeUnit()
+	{ 
+		//only for JAXB -> Almost magic 
 	}
 	
 	private void fillLanguageSet(LanguageHandler[] languageSet)
@@ -60,11 +66,7 @@ public class TimeUnit implements LengthUnit
 	}
 	
 	
-	@SuppressWarnings("unused")
-	private TimeUnit()
-	{ 
-		//only for JAXB -> Almost magic 
-	}
+	
 
 	@Override
 	public String toString() 
@@ -93,5 +95,17 @@ public class TimeUnit implements LengthUnit
 	public boolean isSIUnit() 
 	{
 		return IS_SI_UNIT;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUnitName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

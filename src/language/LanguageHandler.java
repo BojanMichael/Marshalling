@@ -3,14 +3,14 @@ package language;
 public class LanguageHandler 
 {
 	private String language;
-	private String context;
-	private String key;
+	private String name;
+	private String description;
 	
-	public LanguageHandler(String language, String key, String context)
+	public LanguageHandler(String language, String name, String description)
 	{
 		this.language = language;
-		this.key = key;
-		this.context = context;
+		this.name = name;
+		this.description = description;
 	}
 
 	public String getLanguage() 
@@ -18,9 +18,9 @@ public class LanguageHandler
 		return language;
 	}
 
-	public String getContext() 
+	public String getName() 
 	{
-		return context;
+		return name;
 	}
 
 	public void setLanguage(String language) 
@@ -28,18 +28,18 @@ public class LanguageHandler
 		this.language = language;
 	}
 
-	public void setContext(String context) 
+	public void setName(String name) 
 	{
-		this.context = context;
+		this.name = name;
 	}
 	
-	public String getKey() 
+	public String getDescription() 
 	{
-		return key;
+		return description;
 	}
-	
-	public void setKey(String key) 
+
+	public void setDescription(String description) 
 	{
-		this.key = key;
+		this.description = description;
 	}
 }

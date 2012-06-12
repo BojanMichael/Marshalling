@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "http://ch.fbi.xml.beispielEins")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TimeUnits {
-
+public class TimeUnits 
+{
 	private List<TimeUnit> timeUnitList = new ArrayList<TimeUnit>();
 	
 	public TimeUnits()

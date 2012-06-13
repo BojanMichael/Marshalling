@@ -1,6 +1,6 @@
 package xmlAdapter;
 
-public class MapAdapterAsArray extends XmlAdapter<LanguageHandler[], Map<>>
+public class MapAdapterAsArray //extends XmlAdapter<LanguageHandler[], Map<>>
 {
-	public LanguageHandler[] marshal(Map<> map) 
+//	public LanguageHandler[] marshal(Map<> map) 
 }

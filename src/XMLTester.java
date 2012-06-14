@@ -3,6 +3,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
@@ -55,11 +56,20 @@ public class XMLTester
 		//		tUList.add(new TimeUnit("dm", 0.1, false, "Dezimeter"));
 		//		tUList.add(new TimeUnit("cm", 0.01, false, "Centimeter"));
 
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		FileOutputStream fOS = null;
+		try 
+		{
+			fOS = new FileOutputStream("./outObject.xml");
+		}
+		catch (FileNotFoundException e1) 
+		{
+			System.out.println(e1.getMessage());
+			e1.printStackTrace();
+		}
 
 		try 
 		{
-			Factory.saveInstance(os,tUList);
+			Factory.saveInstance(fOS,tUList);
 		} 
 		catch (JAXBException e) 
 		{

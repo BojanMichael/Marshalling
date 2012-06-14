@@ -23,7 +23,7 @@ public class TimeUnit implements LengthUnit
 	@XmlElement(name="is_si_unit", nillable=true, required=true)
 	private boolean IS_SI_UNIT;
 	
-	@XmlElement(name="languageHandlerList")
+	@XmlElement(name="languageHandler")
 	private ArrayList<LanguageHandler> languageHandlerList = new ArrayList<LanguageHandler>();
 	
 	

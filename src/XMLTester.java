@@ -1,13 +1,23 @@
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.Scanner;
 import javax.xml.bind.JAXBException;
+
 import language.LanguageHandler;
+import length.LengthUnit;
 
 import org.junit.Test;
 
 import unit.MyUnit;
+import unit.MyUnits;
 
 
 public class XMLTester 
@@ -42,15 +52,13 @@ public class XMLTester
 	public void marshal() 
 	{
 
-		//		System.out.println(Locale.getDefault().getLanguage());
-
-		TimeUnits tUList = new TimeUnits();
-
-		tUList.add(new TimeUnit("km", 1000, false, new LanguageHandler[]{new LanguageHandler("de", "Kilometer", "Beschr"), new LanguageHandler("en", "kilometer", "descr")}));
-		tUList.add(new TimeUnit("m", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Meter", "Beschr"), new LanguageHandler("en", "meter", "descr")}));
-		//		tUList.add(new TimeUnit("dm", 0.1, false, "Dezimeter"));
-		//		tUList.add(new TimeUnit("cm", 0.01, false, "Centimeter"));
-
+//		System.out.println(Locale.getDefault().getLanguage());
+		
+		// Length Unit
+		MyUnits lengthUnits = new MyUnits();		
+		lengthUnits.add(new TimeUnit("km", 1000, false, new LanguageHandler[]{new LanguageHandler("de", "Kilometer", "Beschr"), new LanguageHandler("en", "kilometer", "descr")}));
+		lengthUnits.add(new TimeUnit("m", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Meter", "Beschr"), new LanguageHandler("en", "meter", "descr")}));
+		
 		FileOutputStream fOS = null;
 		try 
 		{
@@ -64,7 +72,7 @@ public class XMLTester
 
 		try 
 		{
-			Factory.saveInstance(fOS,tUList);
+			Factory.saveInstance(fOS, lengthUnits);
 		} 
 		catch (JAXBException e) 
 		{
@@ -76,19 +84,6 @@ public class XMLTester
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-
-
-		//		try
-		//		{
-		//			FileWriter fstream = new FileWriter("out.xsd");
-		//			BufferedWriter out = new BufferedWriter(fstream);
-		//			out.write(fileOutString);
-		//			out.close();
-		//		}
-		//		catch (Exception e)
-		//		{
-		//			System.err.println(e.getMessage());
-		//		}
 	}
 
 	@Test

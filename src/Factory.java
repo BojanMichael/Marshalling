@@ -9,6 +9,7 @@ import javax.xml.bind.SchemaOutputResolver;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.validation.Schema;
 
 public class Factory 
 {
@@ -29,10 +30,12 @@ public class Factory
 		outputStream.flush();
 	}
 
-	public static Object loadInstance(InputStream inputStream, Class instanceClass) throws JAXBException
+	public static Object loadInstance(InputStream inputStream,Schema schema,Class instanceClass) throws JAXBException 
 	{
 		Unmarshaller unmarshaller = JAXBContext.newInstance(instanceClass).createUnmarshaller();
-		return unmarshaller.unmarshal(inputStream);
+		unmarshaller.setSchema(schema);
+		Object instance = unmarshaller.unmarshal(inputStream);
+		return instance;
 	}
 
 

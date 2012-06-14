@@ -2,11 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
-
 import javax.swing.JComboBox;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -44,9 +40,7 @@ public class ConverterFrame extends JFrame
 		layoutPanel.add(secondUnit);
 		layoutPanel.add(outputField);
 		
-		Insests i = new Insets(10,10,10,10);
-
-		this.add(new JSeparator(), BorderLayout.NORTH);
+//		this.add(new Insets(10,10,10,10), BorderLayout.NORTH);
 		this.add(layoutPanel,BorderLayout.CENTER);
 		
 		

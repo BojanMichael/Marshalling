@@ -1,18 +1,9 @@
-import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Locale;
-import java.util.Scanner;
 import javax.xml.bind.JAXBException;
-
 import language.LanguageHandler;
-import length.LengthUnit;
 
 import org.junit.Test;
 

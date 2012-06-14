@@ -15,7 +15,7 @@ import language.LanguageHandler;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(namespace="http://ch.fbi.xml.beispielEins", name="MyUnit")
-public abstract class MyUnit implements Units
+public class MyUnit implements Units
 {
 	@XmlElement(name="unit_label", nillable=false, required=true)	
 	private String unitLabel;

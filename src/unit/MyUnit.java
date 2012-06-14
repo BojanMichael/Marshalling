@@ -14,7 +14,7 @@ import language.LanguageHandler;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(namespace="http://ch.fbi.xml.beispielEins",name="MyUnit")
+@XmlRootElement(namespace="http://ch.fbi.xml.beispielEins", name="MyUnit")
 public abstract class MyUnit implements Units
 {
 	@XmlElement(name="unit_label", nillable=false, required=true)	
@@ -68,8 +68,7 @@ public abstract class MyUnit implements Units
 	@Override
 	public String getDescription(String language)
 	{
-		//		Please implement this method
-		return null;
+		return languageHandlerHashMap.get(language).getDescription();
 	}
 
 	@Override
@@ -81,10 +80,10 @@ public abstract class MyUnit implements Units
 	@Override
 	public String getUnitName(String language)
 	{
-		//		Please implement this method
-		return null;
+		return languageHandlerHashMap.get(language).getName();
 	}
 
+	@Override
 	public boolean addNewLanguage(LanguageHandler language)
 	{
 		if(languageHandlerHashMap != null)

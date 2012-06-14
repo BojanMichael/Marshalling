@@ -1,9 +1,16 @@
 package unit;
 
+import java.util.HashMap;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import xmlAdapter.MapAdapterAsArray;
+
+import language.LanguageHandler;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,18 +24,27 @@ public abstract class MyUnit implements Units
 	private double factorToSiUnit;
 		
 	@XmlElement(name="unit_name", nillable=true, required=false)
-	private String unitName;
+	private boolean isSiUnit;
 	
-	public MyUnit(String unitLabel, double factorToSIUnit)
+	@XmlJavaTypeAdapter(MapAdapterAsArray.class)
+	@XmlElement(name = "languageMap")
+	private HashMap<String, LanguageHandler> languageHandlerHashMap;
+	
+	public MyUnit(String unitLabel, double factorToSIUnit, boolean isSiUnit, LanguageHandler[] languageSet)
 	{
 		this.unitLabel = unitLabel;
 		this.factorToSiUnit = factorToSIUnit;
+		this.isSiUnit = isSiUnit;
+		
+		fillMap(languageSet);
 	}
-	public MyUnit(String unitLabel,double factorToSIUnit,String unitName)
+	
+	private void fillMap(LanguageHandler[] languageSet)
 	{
-		this.unitLabel = unitLabel;
-		this.factorToSiUnit = factorToSIUnit;
-		this.unitName = unitName;
+		languageHandlerHashMap = new HashMap<String, LanguageHandler>();
+		
+		for(LanguageHandler lang : languageSet)
+			languageHandlerHashMap.put(lang.getLanguage(), lang);
 	}
 	
 	@SuppressWarnings("unused")
@@ -48,13 +64,7 @@ public abstract class MyUnit implements Units
 	{
 		return factorToSiUnit;
 	}
-	
-	@Override
-	public String getUnitName() 
-	{
-		return unitName;
-	}
-	
+
 	@Override
 	public String getDescription()
 	{
@@ -65,13 +75,30 @@ public abstract class MyUnit implements Units
 	@Override
 	public boolean isSIUnit()
 	{
+		return isSiUnit;
+	}
+	
+	@Override
+	public String getUnitName()
+	{
 //		Please implement this method
+		return null;
+	}
+	
+	public boolean addNewLanguage(LanguageHandler language)
+	{
+		if(languageHandlerHashMap != null)
+		{
+			languageHandlerHashMap.put(language.getLanguage(), language);
+			return true;
+		}
+		
 		return false;
 	}
 
 	@Override
 	public String toString() 
 	{
-		return "TimeUnit [UNIT_LABEL=" + unitLabel + ", FACTOR_TO_SI_UNIT=" + factorToSiUnit + ", UNIT_NAME=" + unitName + "]";
+		return "TimeUnit [UNIT_LABEL=" + unitLabel + ", FACTOR_TO_SI_UNIT=" + factorToSiUnit + ", UNIT_NAME=" + "[UnitName] " + "]";
 	}
 }

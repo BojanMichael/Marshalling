@@ -13,9 +13,10 @@ public class LanguageHandler
 		this.description = description;
 	}
 	
+	@SuppressWarnings("unused")
 	private LanguageHandler()
 	{
-		//used for marshalling
+		//Required by JAXB
 	}
 
 	public String getLanguage() 

@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,8 +12,11 @@ import java.util.Scanner;
 import javax.xml.bind.JAXBException;
 
 import language.LanguageHandler;
+import length.LengthUnit;
 
 import org.junit.Test;
+
+import unit.MyUnit;
 
 
 public class XMLTester 
@@ -94,6 +98,28 @@ public class XMLTester
 		//		{
 		//			System.err.println(e.getMessage());
 		//		}
+	}
+
+	@Test
+	public void saveSchema()
+	{
+		File fOS = null;
+		fOS = new File("schemas");
+
+		try 
+		{
+			Factory.saveSchema(fOS, MyUnit.class);
+		} 
+		catch (JAXBException e) 
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 }

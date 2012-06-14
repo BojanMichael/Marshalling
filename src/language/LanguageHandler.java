@@ -12,6 +12,11 @@ public class LanguageHandler
 		this.name = name;
 		this.description = description;
 	}
+	
+	private LanguageHandler()
+	{
+		//used for marshalling
+	}
 
 	public String getLanguage() 
 	{

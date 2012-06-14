@@ -8,10 +8,18 @@ import javax.xml.bind.Unmarshaller;
 
 public class Factory 
 {
-	public static void saveInstance (OutputStream outputStream , Object instance) throws JAXBException , IOException 
+	//	public static void saveInstance (OutputStream outputStream , Object instance) throws JAXBException , IOException 
+	//	{
+	//		Marshaller marshaller = JAXBContext.newInstance(instance.getClass()).createMarshaller();
+	//
+	//		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	//		marshaller.marshal(instance, outputStream);
+	//		outputStream.flush();
+	//	}
+
+	public static void saveInstance(OutputStream outputStream, Object instance) throws JAXBException, IOException 
 	{
 		Marshaller marshaller = JAXBContext.newInstance(instance.getClass()).createMarshaller();
-
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		marshaller.marshal(instance, outputStream);
 		outputStream.flush();

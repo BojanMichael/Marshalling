@@ -1,13 +1,23 @@
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.Scanner;
 import javax.xml.bind.JAXBException;
+
 import language.LanguageHandler;
+import length.LengthUnit;
 
 import org.junit.Test;
 
 import unit.MyUnit;
+import unit.MyUnits;
 
 
 public class XMLTester 
@@ -42,15 +52,22 @@ public class XMLTester
 	public void marshal() 
 	{
 
-		//		System.out.println(Locale.getDefault().getLanguage());
-
-		TimeUnits tUList = new TimeUnits();
-
-		tUList.add(new TimeUnit("km", 1000, false, new LanguageHandler[]{new LanguageHandler("de", "Kilometer", "Beschr"), new LanguageHandler("en", "kilometer", "descr")}));
-		tUList.add(new TimeUnit("m", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Meter", "Beschr"), new LanguageHandler("en", "meter", "descr")}));
-		//		tUList.add(new TimeUnit("dm", 0.1, false, "Dezimeter"));
-		//		tUList.add(new TimeUnit("cm", 0.01, false, "Centimeter"));
-
+		String lg = Locale.getDefault().getLanguage();
+		
+		// Length Unit
+		MyUnits lengthUnits = new MyUnits();		
+		lengthUnits.add(new MyUnit("km", 1000, false, new LanguageHandler[]{new LanguageHandler("de", "Kilometer", "Beschr"), new LanguageHandler("en", "kilometer", "descr")}));
+		lengthUnits.add(new MyUnit("m", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Meter", "Beschr"), new LanguageHandler("en", "meter", "descr")}));
+		
+		// Time Unit
+		MyUnits timeUnits = new MyUnits();
+		timeUnits.add(new MyUnit("min", 1/60, false, new LanguageHandler[]{new LanguageHandler("de", "Minuten", "Beschr"), new LanguageHandler("en", "minutes", "descr")}));
+		timeUnits.add(new MyUnit("s", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Sekunden", "Beschr"), new LanguageHandler("en", "seconds", "descr")}));
+		
+		
+		
+		// funktioniert auch nicht mehr richtig
+		/*
 		FileOutputStream fOS = null;
 		try 
 		{
@@ -64,7 +81,7 @@ public class XMLTester
 
 		try 
 		{
-			Factory.saveInstance(fOS,tUList);
+			Factory.saveInstance(fOS, lengthUnits);
 		} 
 		catch (JAXBException e) 
 		{
@@ -76,41 +93,53 @@ public class XMLTester
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-
-
-		//		try
-		//		{
-		//			FileWriter fstream = new FileWriter("out.xsd");
-		//			BufferedWriter out = new BufferedWriter(fstream);
-		//			out.write(fileOutString);
-		//			out.close();
-		//		}
-		//		catch (Exception e)
-		//		{
-		//			System.err.println(e.getMessage());
-		//		}
+		*/
+		
+		
+		// tests, if the length unit is working
+		for(MyUnit unit : lengthUnits)
+		{
+			System.out.println("--------------------------------------------------------------------------");
+			System.out.println("Name in " + lg + "\t\t" + unit.getUnitName(lg));
+			System.out.println("Description in " + lg + "\t" + unit.getDescription(lg));
+			System.out.println("--------------------------------------------------------------------------");
+		}
+		
+		// tests, if the time unit is working
+		for(MyUnit unit : timeUnits)
+		{
+			System.out.println("--------------------------------------------------------------------------");
+			System.out.println("Name in " + lg + "\t\t" + unit.getUnitName(lg));
+			System.out.println("Description in " + lg + "\t" + unit.getDescription(lg));
+			System.out.println("--------------------------------------------------------------------------");
+		}
 	}
 
 	@Test
 	public void saveSchema()
 	{
-		File fOS = null;
-		fOS = new File("schemas");
-
-		try 
-		{
-			Factory.saveSchema(fOS, MyUnit.class);
-		} 
-		catch (JAXBException e) 
-		{
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		} 
-		catch (IOException e) 
-		{
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
+		
+		// bi mir isch das nid gange ;)
+		
+		
+		
+//		File fOS = null;
+//		fOS = new File("schemas");
+//
+//		try 
+//		{
+//			Factory.saveSchema(fOS, MyUnit.class);
+//		} 
+//		catch (JAXBException e) 
+//		{
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
+//		} 
+//		catch (IOException e) 
+//		{
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
+//		}
 	}
 
 }

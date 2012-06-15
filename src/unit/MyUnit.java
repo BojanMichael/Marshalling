@@ -14,77 +14,76 @@ import language.LanguageHandler;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(namespace="http://ch.fbi.xml.beispielEins",name="MyUnit")
-public abstract class MyUnit implements Units
+@XmlRootElement(namespace="http://ch.fbi.xml.beispielEins", name="MyUnit")
+public class MyUnit implements Units
 {
 	@XmlElement(name="unit_label", nillable=false, required=true)	
 	private String unitLabel;
-	
+
 	@XmlElement(name="factor_to_SI_unit", nillable=false, required=true)	
 	private double factorToSiUnit;
-		
+
 	@XmlElement(name="unit_name", nillable=true, required=false)
 	private boolean isSiUnit;
-	
+
 	@XmlJavaTypeAdapter(MapAdapterAsArray.class)
 	@XmlElement(name = "languageMap")
 	private HashMap<String, LanguageHandler> languageHandlerHashMap;
-	
+
 	public MyUnit(String unitLabel, double factorToSIUnit, boolean isSiUnit, LanguageHandler[] languageSet)
 	{
 		this.unitLabel = unitLabel;
 		this.factorToSiUnit = factorToSIUnit;
 		this.isSiUnit = isSiUnit;
-		
+
 		fillMap(languageSet);
 	}
-	
+
 	private void fillMap(LanguageHandler[] languageSet)
 	{
 		languageHandlerHashMap = new HashMap<String, LanguageHandler>();
-		
+
 		for(LanguageHandler lang : languageSet)
 			languageHandlerHashMap.put(lang.getLanguage(), lang);
 	}
-	
+
 	@SuppressWarnings("unused")
 	private MyUnit()
 	{
 		//only for JAXB -> Almost magic
 	}
-	
-//	@Override
+
+	//	@Override
 	public String getUnitLabel() 
 	{
 		return unitLabel;
 	}
-	
-//	@Override
+
+	//	@Override
 	public double getFactorToSiUnit()
 	{
 		return factorToSiUnit;
 	}
 
 	@Override
-	public String getDescription()
+	public String getDescription(String language)
 	{
-//		Please implement this method
-		return null;
+		return languageHandlerHashMap.get(language).getDescription();
 	}
-	
+
 	@Override
 	public boolean isSIUnit()
 	{
 		return isSiUnit;
 	}
-	
+
 	@Override
-	public String getUnitName()
+	public String getUnitName(String language)
 	{
-//		Please implement this method
-		return null;
+		return languageHandlerHashMap.get(language).getName();
 	}
-	
+
+	@Override
 	public boolean addNewLanguage(LanguageHandler language)
 	{
 		if(languageHandlerHashMap != null)
@@ -92,7 +91,7 @@ public abstract class MyUnit implements Units
 			languageHandlerHashMap.put(language.getLanguage(), language);
 			return true;
 		}
-		
+
 		return false;
 	}
 

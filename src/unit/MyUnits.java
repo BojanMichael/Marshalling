@@ -1,28 +1,31 @@
 package unit;
 
 import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@SuppressWarnings("serial")
+
 @XmlRootElement(namespace = "http://ch.fbi.xml.beispielEins")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MyUnits extends ArrayList<MyUnit>
+public class MyUnits
 {	
-	@Override
-	public boolean add(MyUnit myUnit)
+	@XmlElement(name="MyUnit List", nillable=false, required=true)
+	private ArrayList<MyUnit> myUnitList;
+	
+	public MyUnits()
 	{
-		try
-		{
-			super.add((MyUnit)myUnit);
-			return true;
-		}
-		catch(Exception ex)
-		{
-			System.out.println(ex.getMessage());
-			return false;
-		}		
+		myUnitList = new ArrayList<MyUnit>();
+	}
+	
+	public void add(MyUnit myUnit)
+	{
+		myUnitList.add((MyUnit)myUnit);
+	}
+
+	public ArrayList<MyUnit> getUnitList() 
+	{
+		return myUnitList;
 	}
 }

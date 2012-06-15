@@ -9,7 +9,7 @@ import language.LanguageHandler;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(namespace="http://ch.fbi.xml.beispielEins",name="time_unit")
-public class TimeUnit implements LengthUnit 
+public class TimeUnit
 {
 	@XmlElement(name="unit_label", nillable=false, required=true)	
 	private String UNIT_LABEL;
@@ -74,38 +74,38 @@ public class TimeUnit implements LengthUnit
 		return "TimeUnit [UNIT_LABEL=" + UNIT_LABEL + ", FACTOR_TO_SI_UNIT="
 				+ FACTOR_TO_SI_UNIT + ", UNIT_NAME=" + UNIT_NAME + "]";
 	}
-	
-	@Override
-	public double getFactorTo(Unit unit) 
-	{
-		return (unit.getFactorToSIUnit() / this.FACTOR_TO_SI_UNIT);
-	}
-	
-	@Override
-	public double getFactorToSIUnit() 
-	{
-		return FACTOR_TO_SI_UNIT;
-	}
-	@Override
-	public String getUnitLabel() 
-	{
-		return UNIT_LABEL;
-	}
-	@Override
-	public boolean isSIUnit() 
-	{
-		return IS_SI_UNIT;
-	}
-
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getUnitName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	
+//	@Override
+//	public double getFactorTo(Unit unit) 
+//	{
+//		return (unit.getFactorToSIUnit() / this.FACTOR_TO_SI_UNIT);
+//	}
+//	
+//	@Override
+//	public double getFactorToSIUnit() 
+//	{
+//		return FACTOR_TO_SI_UNIT;
+//	}
+//	@Override
+//	public String getUnitLabel() 
+//	{
+//		return UNIT_LABEL;
+//	}
+//	@Override
+//	public boolean isSIUnit() 
+//	{
+//		return IS_SI_UNIT;
+//	}
+//
+//	@Override
+//	public String getDescription() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public String getUnitName() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

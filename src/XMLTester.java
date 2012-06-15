@@ -3,6 +3,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 import javax.xml.bind.JAXBException;
 import language.LanguageHandler;
@@ -89,7 +90,7 @@ public class XMLTester
 		
 		
 		// tests, if the length unit is working
-		for(MyUnit unit : lengthUnits)
+		for(MyUnit unit : lengthUnits.getUnitList())
 		{
 			System.out.println("--------------------------------------------------------------------------");
 			System.out.println("Name in " + lg + "\t\t" + unit.getUnitName(lg));
@@ -98,7 +99,7 @@ public class XMLTester
 		}
 		
 		// tests, if the time unit is working
-		for(MyUnit unit : timeUnits)
+		for(MyUnit unit : timeUnits.getUnitList())
 		{
 			System.out.println("--------------------------------------------------------------------------");
 			System.out.println("Name in " + lg + "\t\t" + unit.getUnitName(lg));
@@ -107,13 +108,12 @@ public class XMLTester
 		}
 	}
 
-	//@Test
+//	@Test
 	public void saveSchema()
 	{
 		
 		// bi mir isch das nid gange ;)
-		
-		
+				
 		
 		File fOS = null;
 		fOS = new File("schemas");

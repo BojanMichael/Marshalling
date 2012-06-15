@@ -1,18 +1,11 @@
-import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.Scanner;
 import javax.xml.bind.JAXBException;
-
 import language.LanguageHandler;
-import length.LengthUnit;
 
 import org.junit.Test;
 
@@ -22,31 +15,31 @@ import unit.MyUnits;
 
 public class XMLTester 
 {
-	//	@Test
-	//	public void unmarshal() 
-	//	{
-	//		TimeUnits tUList = null;
-	//		try 
-	//		{
-	//			tUList = (TimeUnits)Factory.loadInstance(new FileInputStream("out.xsd"), TimeUnits.class);
-	//		} 
-	//		catch (FileNotFoundException e) 
-	//		{
-	//			System.out.println(e.getMessage());
-	//		} 
-	//		catch (JAXBException e) 
-	//		{
-	//			System.out.println(e.getMessage());
-	//		}
-	//
-	//		if(tUList != null)
-	//		{
-	//			for(TimeUnit el : tUList.getTimeUnitList())
-	//			{
-	//				System.out.println(el.toString());
-	//			}
-	//		}
-	//	}
+//		@Test
+		public void unmarshal() 
+		{
+			TimeUnits tUList = null;
+			try 
+			{
+				tUList = (TimeUnits)Factory.loadInstance(new FileInputStream("./objects/out.xml"), "./schemas", "out.xsd", TimeUnits.class);
+			} 
+			catch (FileNotFoundException e) 
+			{
+				System.out.println(e.getMessage());
+			} 
+			catch (JAXBException e) 
+			{
+				System.out.println(e.getMessage());
+			}
+	
+			if(tUList != null)
+			{
+				for(TimeUnit el : tUList.getTimeUnitList())
+				{
+					System.out.println(el.toString());
+				}
+			}
+		}
 
 	@Test
 	public void marshal() 
@@ -66,12 +59,11 @@ public class XMLTester
 		
 		
 		
-		// funktioniert auch nicht mehr richtig
-		/*
+		// funktioniert
 		FileOutputStream fOS = null;
 		try 
 		{
-			fOS = new FileOutputStream("./outObject.xml");
+			fOS = new FileOutputStream("./objects/out.xml");
 		}
 		catch (FileNotFoundException e1) 
 		{
@@ -93,7 +85,7 @@ public class XMLTester
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		
 		// tests, if the length unit is working
@@ -115,7 +107,7 @@ public class XMLTester
 		}
 	}
 
-	@Test
+	//@Test
 	public void saveSchema()
 	{
 		
@@ -123,23 +115,23 @@ public class XMLTester
 		
 		
 		
-//		File fOS = null;
-//		fOS = new File("schemas");
-//
-//		try 
-//		{
-//			Factory.saveSchema(fOS, MyUnit.class);
-//		} 
-//		catch (JAXBException e) 
-//		{
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
-//		} 
-//		catch (IOException e) 
-//		{
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
-//		}
+		File fOS = null;
+		fOS = new File("schemas");
+
+		try 
+		{
+			Factory.saveSchema(fOS, MyUnit.class);
+		} 
+		catch (JAXBException e) 
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 }

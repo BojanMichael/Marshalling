@@ -13,15 +13,6 @@ import javax.xml.validation.Schema;
 
 public class Factory 
 {
-	//	public static void saveInstance (OutputStream outputStream , Object instance) throws JAXBException , IOException 
-	//	{
-	//		Marshaller marshaller = JAXBContext.newInstance(instance.getClass()).createMarshaller();
-	//
-	//		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-	//		marshaller.marshal(instance, outputStream);
-	//		outputStream.flush();
-	//	}
-
 	public static void saveInstance(OutputStream outputStream, Object instance) throws JAXBException, IOException 
 	{
 		Marshaller marshaller = JAXBContext.newInstance(instance.getClass()).createMarshaller();
@@ -30,10 +21,11 @@ public class Factory
 		outputStream.flush();
 	}
 
-	public static Object loadInstance(InputStream inputStream,Schema schema,Class instanceClass) throws JAXBException 
+	public static Object loadInstance(InputStream inputStream, String schemaURL, String schemaName, Class instanceClass) throws JAXBException 
 	{
 		Unmarshaller unmarshaller = JAXBContext.newInstance(instanceClass).createUnmarshaller();
-		unmarshaller.setSchema(schema);
+//		unmarshaller.setSchema(schema);
+		unmarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,schemaURL+" "+schemaName) ;
 		Object instance = unmarshaller.unmarshal(inputStream);
 		return instance;
 	}

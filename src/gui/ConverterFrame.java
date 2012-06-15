@@ -23,7 +23,6 @@ public class ConverterFrame extends JFrame
 //		firstUnit.addActionListener(listener);
 		
 
-		
 		JComboBox<String> secondUnit = new JComboBox<String>();
 		secondUnit.addItem("Metttter");
 		secondUnit.addItem("MiliMettter");
@@ -34,15 +33,13 @@ public class ConverterFrame extends JFrame
 		JTextField inputField = new JTextField();
 		
 		JTextField outputField = new JTextField();
+		//outputField.setC // Set read only
 
 		layoutPanel.add(firstUnit);
 		layoutPanel.add(inputField);
 		layoutPanel.add(secondUnit);
 		layoutPanel.add(outputField);
 		
-//		this.add(new Insets(10,10,10,10), BorderLayout.NORTH);
 		this.add(layoutPanel,BorderLayout.CENTER);
-		
-		
 	}
 }

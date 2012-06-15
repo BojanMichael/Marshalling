@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class Launcher 
 {
-	private static final int WIDTH = 500, HEIGHT = 500;
+	private static final int WIDTH = 500, HEIGHT = 100;
 	
 	public static void main(String[] args) 
 	{

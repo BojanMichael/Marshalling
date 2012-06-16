@@ -64,7 +64,10 @@ public class XMLTester
 		FileOutputStream fOS = null;
 		try 
 		{
-			fOS = new FileOutputStream("./objects/out.xml");
+			//for michael
+//			fOS = new FileOutputStream("./objects/out.xml");
+			//for bojan
+			fOS = new FileOutputStream("out.xml");
 		}
 		catch (FileNotFoundException e1) 
 		{

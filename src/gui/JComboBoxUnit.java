@@ -5,7 +5,7 @@ import unit.MyUnit;
 import unit.MyUnits;
 
 @SuppressWarnings("serial")
-public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an object with a string and a key --> string: Kilometer and the key: km for searching the correct reference
+public class JComboBoxUnit extends JComboBox<ComboBoxElements>
 {
 	public JComboBoxUnit()
 	{

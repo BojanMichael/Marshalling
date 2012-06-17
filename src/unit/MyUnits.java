@@ -7,11 +7,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement(namespace = "http://ch.fbi.xml.beispielEins")
+@XmlRootElement(namespace = "##default")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class MyUnits
 {	
-	@XmlElement(name="MyUnit List", nillable=false, required=true)
+	@XmlElement(name="MyUnitList", nillable=false, required=true)
 	private ArrayList<MyUnit> myUnitList;
 	
 	public MyUnits()

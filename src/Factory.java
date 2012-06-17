@@ -11,6 +11,8 @@ import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 
+import xmlAdapter.MapAdapterAsArray;
+
 public class Factory 
 {
 	public static void saveInstance(OutputStream outputStream, Object instance) throws JAXBException, IOException 
@@ -20,17 +22,22 @@ public class Factory
 		marshaller.marshal(instance, outputStream);
 		outputStream.flush();
 	}
-
-	public static Object loadInstance(InputStream inputStream, String schemaURL, String schemaName, Class instanceClass) throws JAXBException 
+	
+	@SuppressWarnings("rawtypes") 
+	public static Object loadInstance(InputStream inputStream, Schema schema, Class instanceClass) throws JAXBException 
 	{
 		Unmarshaller unmarshaller = JAXBContext.newInstance(instanceClass).createUnmarshaller();
-//		unmarshaller.setSchema(schema);
-		unmarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,schemaURL+" "+schemaName) ;
+		unmarshaller.setSchema(schema);
+		MapAdapterAsArray adapter = new MapAdapterAsArray();
+		unmarshaller.setAdapter(MapAdapterAsArray.class, adapter);
+//		unmarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,schemaURL+" "+schemaName);
+//		unmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
+		System.out.println("schema: "+unmarshaller.getSchema());
 		Object instance = unmarshaller.unmarshal(inputStream);
 		return instance;
 	}
 
-
+	@SuppressWarnings("rawtypes") 
 	public static void saveSchema(File baseDir, Class... classes) throws JAXBException, IOException 
 	{
 		JAXBContext context = JAXBContext.newInstance(classes);

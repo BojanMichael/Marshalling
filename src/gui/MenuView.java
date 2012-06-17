@@ -8,10 +8,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+@SuppressWarnings("serial")
 public class MenuView extends JMenuBar
-{	
-	private JMenu jMenu = new JMenu();
-	
+{
 	public MenuView()
 	{
 		addMenuItems();
@@ -34,14 +33,13 @@ public class MenuView extends JMenuBar
 		exit = new JMenuItem("Exit");
 		exit.setMnemonic('E');
 		exit.setAccelerator(KeyStroke.getKeyStroke("ctrl E"));
-		exit.addActionListener(new ActionListener(){
-
+		exit.addActionListener(new ActionListener()
+		{
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
 				System.exit(0);
-			}
-			
+			}			
 		});		
 		
 		//add default menu items to the file menu
@@ -54,36 +52,30 @@ public class MenuView extends JMenuBar
 		exportSchema = new JMenuItem("Export a XML - Schema");
 		exportSchema.setMnemonic('S');
 		exportSchema.setAccelerator(KeyStroke.getKeyStroke("ctrl S"));
-		exportSchema.addActionListener(new ActionListener(){
-
+		exportSchema.addActionListener(new ActionListener()
+		{
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
 				// implement the export method
-			}
-			
+			}			
 		});
 		
 		exportXmlFile = new JMenuItem("Export a XML - File");
 		exportXmlFile.setMnemonic('X');
 		exportXmlFile.setAccelerator(KeyStroke.getKeyStroke("ctrl X"));
-		exportXmlFile.addActionListener(new ActionListener(){
-
+		exportXmlFile.addActionListener(new ActionListener()
+		{
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
 				// implement the export method
-			}
-			
-		});
-		
+			}	
+		});		
 		
 		// add links to edit
 		edit.add(exportXmlFile);
-		edit.add(exportSchema);
-				
-		
-		
+		edit.add(exportSchema);		
 		
 		add(menuBar);
 	}

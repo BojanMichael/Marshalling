@@ -19,54 +19,54 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import unit.MyUnits;
+
 public class ConverterFrame extends JFrame 
 {
-	
-	//create instance of myunits
-	
+	private JComboBox<String> firstUnit,secondUnit;
 	
 	public ConverterFrame()
 	{
-		frontViewerFrame();
+		this.setLayout(new BorderLayout());
+		JPanel layoutPanel = new JPanel();
+		layoutPanel.setLayout(new FlowLayout());
 		
-//		this.setLayout(new BorderLayout());
-//		JPanel layoutPanel = new JPanel();
-//		layoutPanel.setLayout(new FlowLayout());
-//		
-//		JComboBox<String> firstUnit = new JComboBox<String>();
-//		firstUnit.addItem("Metttter");
-//		firstUnit.addItem("MiliMettter");
-//		firstUnit.addItem("Ellenlänge");
+		firstUnit = new JComboBox<String>();
+		firstUnit.addItem("Metttter");
+		firstUnit.addItem("MiliMettter");
+		firstUnit.addItem("EllenlÃ¤nge");
 //		firstUnit.setEditable(true);
-////		firstUnit.addActionListener(listener);
-//		
-//
-//		JComboBox<String> secondUnit = new JComboBox<String>();
-//		secondUnit.addItem("Metttter");
-//		secondUnit.addItem("MiliMettter");
-//		secondUnit.addItem("Ellenlänge");
+//		firstUnit.addActionListener(listener);
+		
+
+		secondUnit = new JComboBox<String>();
+		secondUnit.addItem("Metttter");
+		secondUnit.addItem("MiliMettter");
+		secondUnit.addItem("EllenlÃ¤nge");
 //		secondUnit.setEditable(true);
-////		secondUnit.addActionListener(listener);
-//		
-//		JTextField inputField = new JTextField();
-//		
-//		JTextField outputField = new JTextField();
-//		//outputField.setC // Set read only
-//
-//		layoutPanel.add(firstUnit);
-//		layoutPanel.add(inputField);
-//		layoutPanel.add(secondUnit);
-//		layoutPanel.add(outputField);
-//		
-//		this.add(layoutPanel,BorderLayout.CENTER);
+//		secondUnit.addActionListener(listener);
+		
+		JTextField inputField = new JTextField("input a number");
+		
+		JTextField outputField = new JTextField("output");
+		outputField.setEditable(false);
+		
+		layoutPanel.add(firstUnit);
+		layoutPanel.add(inputField);
+		layoutPanel.add(secondUnit);
+		layoutPanel.add(outputField);
+		
+		this.add(layoutPanel,BorderLayout.CENTER);
+		
+		frontViewerFrame();
 	}
 	
 	private void frontViewerFrame()
 	{
-		setJMenuBar(new MenuView());
-		setLayout(new FlowLayout());
+		setJMenuBar(new MenuView(firstUnit,secondUnit));
+//		setLayout(new FlowLayout());
 		
-		//muess no di richtige paramter mitgä
+		//muess no di richtige paramter mitgï¿½
 		//add(new ComboBoxCreator());
 		
 		

@@ -28,4 +28,9 @@ public class MyUnits
 	{
 		return myUnitList;
 	}
+	
+	public void removeAll()
+	{
+		myUnitList = new ArrayList<MyUnit>();
+	}
 }

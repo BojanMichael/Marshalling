@@ -63,7 +63,6 @@ public class XMLTester
 //	@Test
 	public void marshal() 
 	{
-
 		String lg = Locale.getDefault().getLanguage();
 
 		// Length Unit

@@ -3,17 +3,23 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import unit.MyUnits;
+import xmlTools.MyUnitsMarshaller;
+
 @SuppressWarnings("serial")
 public class MenuView extends JMenuBar
 {
-	public MenuView()
+	private JComboBox<String> firstUnit,secondUnit;
+	public MenuView(JComboBox<String> firstUnit, JComboBox<String> secondUnit)
 	{
-		//myunits weitergeben
+		this.firstUnit = firstUnit;
+		this.secondUnit = secondUnit;
 		addMenuItems();
 	}
 	
@@ -83,7 +89,8 @@ public class MenuView extends JMenuBar
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				// implement the import method
+				Launcher.unitList = MyUnitsMarshaller.unmarshal("default.xml");
+				firstUnit.removeAll();
 			}	
 		});
 		

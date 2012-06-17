@@ -104,7 +104,6 @@ public class MyUnit implements IMultiLingualUnit
 	@Override
 	public double getFactorTo(IUnit unit) 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return this.factorToSiUnit/unit.getFactorToSIUnit();
 	}
 }

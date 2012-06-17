@@ -16,7 +16,7 @@ import unit.MyUnit;
 
 public class ConverterFrame extends JFrame 
 {
-	private JComboBox<String> firstUnit,secondUnit;
+	private JComboBoxUnit firstUnit,secondUnit;
 	private JTextField inputField,outputField,infoField;
 	private double input;
 
@@ -27,8 +27,8 @@ public class ConverterFrame extends JFrame
 		JPanel layoutPanel = new JPanel();
 		layoutPanel.setLayout(new GridLayout());
 
-		firstUnit = new JComboBox<String>();
-		secondUnit = new JComboBox<String>();
+		firstUnit = new JComboBoxUnit();
+		secondUnit = new JComboBoxUnit();
 
 		inputField = new JTextField("input a number");
 		inputField.addKeyListener(new KeyListener() 
@@ -95,7 +95,7 @@ public class ConverterFrame extends JFrame
 
 	private void frontViewerFrame()
 	{
-		setJMenuBar(new MenuView(firstUnit,secondUnit,this));
+		setJMenuBar(new MenuView(firstUnit, secondUnit, this));
 		//		setLayout(new FlowLayout());
 
 		//muess no di richtige paramter mitg�

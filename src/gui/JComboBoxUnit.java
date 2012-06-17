@@ -3,18 +3,14 @@ package gui;
 import javax.swing.JComboBox;
 import unit.MyUnit;
 import unit.MyUnits;
+import xmlTools.MyUnitsMarshaller;
 
 @SuppressWarnings("serial")
 public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an object with a string and a key --> string: Kilometer and the key: km for searching the correct reference
 {
-	public JComboBoxUnit(MyUnits unitList)
-	{
-		createComboBox(unitList);
-	}
-
 	public JComboBoxUnit()
 	{
-		// default file laden
+		restructure(Launcher.unitList);
 	}
 
 	private boolean createComboBox(MyUnits unitList)
@@ -43,6 +39,16 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		return createComboBox(unitList);
 	}
 
+	public String getKey()
+	{
+		ComboBoxElements element = (ComboBoxElements)super.getSelectedItem();
+		
+		if(element != null)
+			return element.getKey();
+		
+		return "";
+	}
+	
 	@Override
 	public Object getSelectedItem()
 	{

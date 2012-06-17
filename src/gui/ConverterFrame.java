@@ -28,12 +28,10 @@ public class ConverterFrame extends JFrame
 		JPanel layoutPanel = new JPanel();
 		layoutPanel.setLayout(new GridLayout());
 
+		Launcher.unitList = MyUnitsMarshaller.unmarshal(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME);
+		
 		firstUnit = new JComboBoxUnit();
 		secondUnit = new JComboBoxUnit();
-		
-		Launcher.unitList = MyUnitsMarshaller.unmarshal(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME);
-		firstUnit.restructure(Launcher.unitList);
-		secondUnit.restructure(Launcher.unitList);
 
 		inputField = new JTextField("input a number");
 		inputField.addKeyListener(new KeyListener() 
@@ -69,11 +67,11 @@ public class ConverterFrame extends JFrame
 				MyUnit unit1 = null, unit2 = null;
 				for(MyUnit u : Launcher.unitList.getUnitList())
 				{
-					if(u.getUnitLabel() == firstUnit.getSelectedItem().toString())
+					if(u.getUnitLabel() == firstUnit.getKey())
 					{
 						unit1 = u;
 					}
-					if(u.getUnitLabel() == secondUnit.getSelectedItem().toString())
+					if(u.getUnitLabel() == secondUnit.getKey()) //.getSelectedItem().toString()
 					{
 						unit2 = u;
 					}

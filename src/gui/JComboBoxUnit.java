@@ -1,6 +1,5 @@
 package gui;
 
-import java.util.Locale;
 import javax.swing.JComboBox;
 import unit.MyUnit;
 import unit.MyUnits;
@@ -11,6 +10,11 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 	public JComboBoxUnit(MyUnits unitList)
 	{
 		createComboBox(unitList);
+	}
+	
+	public JComboBoxUnit()
+	{
+		// default file laden
 	}
 	
 	private boolean createComboBox(MyUnits unitList)
@@ -47,8 +51,7 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		if(element != null)
 			return element.getElement();
 		
-		return "";
-		
+		return "";		
 	}
 	
 }

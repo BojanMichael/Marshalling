@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import unit.MyUnit;
+import xmlTools.MyUnitsMarshaller;
 
 public class ConverterFrame extends JFrame 
 {
@@ -29,6 +30,10 @@ public class ConverterFrame extends JFrame
 
 		firstUnit = new JComboBoxUnit();
 		secondUnit = new JComboBoxUnit();
+		
+		Launcher.unitList = MyUnitsMarshaller.unmarshal(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME);
+		firstUnit.restructure(Launcher.unitList);
+		secondUnit.restructure(Launcher.unitList);
 
 		inputField = new JTextField("input a number");
 		inputField.addKeyListener(new KeyListener() 

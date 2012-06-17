@@ -82,7 +82,7 @@ public class MenuView extends JMenuBar
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				// implement the export method
+				// implement the import method
 			}	
 		});
 		

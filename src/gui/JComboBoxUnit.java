@@ -18,7 +18,7 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		try
 		{
 			for(MyUnit unit : unitList.getUnitList())
-				addItem(new ComboBoxElements(unit.getUnitLabel(), unit.getUnitName(Locale.getDefault().getLanguage()), true));
+				addItem(new ComboBoxElements(unit.getUnitLabel(), unit.getUnitName(Launcher.DEF_LANG), true));
 			
 			setEnabled(true);
 			return true;
@@ -38,4 +38,17 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		removeAllItems();		
 		return createComboBox(unitList);
 	}
+	
+	@Override
+	public Object getSelectedItem()
+	{
+		ComboBoxElements element = (ComboBoxElements) super.getSelectedItem();
+		
+		if(element != null)
+			return element.getElement();
+		
+		return "";
+		
+	}
+	
 }

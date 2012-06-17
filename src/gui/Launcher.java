@@ -25,6 +25,11 @@ public class Launcher
 	
 	public static void main(String[] args) 
 	{
+		
+		//first read file(xml) unmarshal and fill the arraylist with units ;)
+		
+		
+		
 		ConverterFrame cF = new ConverterFrame();
 		cF.setSize(WIDTH, HEIGHT);
 		cF.setTitle("Converter");

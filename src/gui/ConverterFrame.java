@@ -62,7 +62,8 @@ public class ConverterFrame extends JFrame
 		setJMenuBar(new MenuView());
 		setLayout(new FlowLayout());
 		
-		add(new ComboBoxCreator());
+		//muess no di richtige paramter mitgä
+		//add(new ComboBoxCreator());
 		
 		
 //		setLayout(new FlowLayout());

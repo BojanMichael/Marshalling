@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:ns1="http://ch.fbi.xml.beispielEins" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://ch.fbi.xml.beispielEins" schemaLocation="schema1.xsd"/>
+
+  <xs:element name="myUnits" type="myUnits"/>
+
+  <xs:complexType name="myUnits">
+    <xs:sequence>
+      <xs:element name="MyUnitList" type="myUnit" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="myUnit">
+    <xs:sequence>
+      <xs:element name="unit_label" type="xs:string"/>
+      <xs:element name="factor_to_SI_unit" type="xs:double"/>
+      <xs:element name="unit_name" type="xs:boolean" nillable="true"/>
+      <xs:element name="languageMap" type="languageHandlerMapElementArray" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="languageHandlerMapElement">
+    <xs:sequence>
+      <xs:element name="languageSet" type="languageHandler"/>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="languageHandler">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="languageHandlerMapElementArray" final="#all">
+    <xs:sequence>
+      <xs:element name="item" type="languageHandlerMapElement" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

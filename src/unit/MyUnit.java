@@ -59,12 +59,6 @@ public class MyUnit implements IMultiLingualUnit
 		return unitLabel;
 	}
 
-	//	@Override
-	public double getFactorToSiUnit()
-	{
-		return factorToSiUnit;
-	}
-
 	@Override
 	public String getDescription(String language)
 	{
@@ -104,8 +98,7 @@ public class MyUnit implements IMultiLingualUnit
 	@Override
 	public double getFactorToSIUnit() 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return factorToSiUnit;
 	}
 
 	@Override

@@ -1,9 +1,13 @@
+import gui.Launcher;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Locale;
+
+import javax.swing.DefaultBoundedRangeModel;
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.validation.Schema;
@@ -24,8 +28,8 @@ public class XMLTester
 		try 
 		{
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = sf.newSchema(new File("./schemas/schema1.xsd"));
-			lengthUnits = (MyUnits)Factory.loadInstance(new FileInputStream("./objects/out.xml"), schema, MyUnits.class);
+			Schema schema = sf.newSchema(new File(Launcher.SCHEMA_LOC+Launcher.SCHEMA1_NAME));
+			lengthUnits = (MyUnits)Factory.loadInstance(new FileInputStream(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME), schema, MyUnits.class);
 		} 
 		catch (FileNotFoundException e) 
 		{
@@ -45,7 +49,9 @@ public class XMLTester
 		{
 			for(MyUnit el : lengthUnits.getUnitList())
 			{
-				System.out.println(el.toString());
+				System.out.println("--------------------------------------------------------------------------");
+				System.out.println(Launcher.DEF_LANG+": ["+el.getUnitLabel()+"] "+el.getUnitName(Launcher.DEF_LANG)+" - "+el.getDescription(Launcher.DEF_LANG));
+				System.out.println("--------------------------------------------------------------------------");
 			}
 		}
 	}
@@ -58,16 +64,13 @@ public class XMLTester
 
 		// Length Unit
 		MyUnits lengthUnits = new MyUnits();		
-		lengthUnits.add(new MyUnit("km", 1000, false, new LanguageHandler[]{new LanguageHandler("de", "Kilometer", "Beschr"), new LanguageHandler("en", "kilometer", "descr")}));
-		lengthUnits.add(new MyUnit("m", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Meter", "Beschr"), new LanguageHandler("en", "meter", "descr")}));
+		lengthUnits.add(new MyUnit("km", 1000, false, new LanguageHandler[]{new LanguageHandler("de", "Kilometer", "Es sind Kilometer"), new LanguageHandler("en", "kilometer", "1000 times a meter")}));
+		lengthUnits.add(new MyUnit("m", 1, true,  new LanguageHandler[]{new LanguageHandler("de", "Meter", "Ein Meter ist knapp die Hälfte einer Körperkrösse"), new LanguageHandler("en", "meter", "Meters are not Inches")}));
 
 		FileOutputStream fOS = null;
 		try 
 		{
-			//for michael
-			fOS = new FileOutputStream("./objects/out.xml");
-			//for bojan
-			//			fOS = new FileOutputStream("out.xml");
+			fOS = new FileOutputStream(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME);
 		}
 		catch (FileNotFoundException e1) 
 		{
@@ -104,7 +107,7 @@ public class XMLTester
 	public void saveSchema()
 	{		
 		File fOS = null;
-		fOS = new File("schemas");
+		fOS = new File(Launcher.SCHEMA_LOC);
 
 		try 
 		{
@@ -121,5 +124,4 @@ public class XMLTester
 			e.printStackTrace();
 		}
 	}
-
 }

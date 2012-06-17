@@ -32,7 +32,7 @@ public class Factory
 		unmarshaller.setAdapter(MapAdapterAsArray.class, adapter);
 //		unmarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,schemaURL+" "+schemaName);
 //		unmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
-		System.out.println("schema: "+unmarshaller.getSchema());
+//		System.out.println("schema: "+unmarshaller.getSchema());
 		Object instance = unmarshaller.unmarshal(inputStream);
 		return instance;
 	}

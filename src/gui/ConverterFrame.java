@@ -15,11 +15,13 @@ public class ConverterFrame extends JFrame
 		JPanel layoutPanel = new JPanel();
 		layoutPanel.setLayout(new FlowLayout());
 		
+		MenuView menu = new MenuView();
+		
 		JComboBox<String> firstUnit = new JComboBox<String>();
 		firstUnit.addItem("Metttter");
 		firstUnit.addItem("MiliMettter");
 		firstUnit.addItem("Ellenlänge");
-		firstUnit.setEditable(true);
+//		firstUnit.setEditable(false);
 //		firstUnit.addActionListener(listener);
 		
 
@@ -27,12 +29,13 @@ public class ConverterFrame extends JFrame
 		secondUnit.addItem("Metttter");
 		secondUnit.addItem("MiliMettter");
 		secondUnit.addItem("Ellenlänge");
-		secondUnit.setEditable(true);
+//		secondUnit.setEditable(true);
 //		secondUnit.addActionListener(listener);
 		
-		JTextField inputField = new JTextField();
+		JTextField inputField = new JTextField("input a number");
 		
-		JTextField outputField = new JTextField();
+		JTextField outputField = new JTextField("output");
+		outputField.setEditable(false);
 		//outputField.setC // Set read only
 
 		layoutPanel.add(firstUnit);
@@ -40,6 +43,7 @@ public class ConverterFrame extends JFrame
 		layoutPanel.add(secondUnit);
 		layoutPanel.add(outputField);
 		
+		this.add(menu,BorderLayout.NORTH);
 		this.add(layoutPanel,BorderLayout.CENTER);
 	}
 }

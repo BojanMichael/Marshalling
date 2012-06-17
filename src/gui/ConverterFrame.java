@@ -17,7 +17,7 @@ import unit.MyUnit;
 public class ConverterFrame extends JFrame 
 {
 	private JComboBox<String> firstUnit,secondUnit;
-	private JTextField inputField,outputField;
+	private JTextField inputField,outputField,infoField;
 	private double input;
 
 	public ConverterFrame()
@@ -83,9 +83,13 @@ public class ConverterFrame extends JFrame
 		layoutPanel.add(secondUnit);
 		layoutPanel.add(outputField);
 		layoutPanel.add(submit);
+		
+		
+		infoField = new JTextField("Welcome");
 
 		this.add(layoutPanel,BorderLayout.NORTH);
-
+		this.add(infoField, BorderLayout.CENTER);
+		
 		frontViewerFrame();
 	}
 
@@ -108,5 +112,10 @@ public class ConverterFrame extends JFrame
 		//		
 		//		//add main panel to the gui
 		//		add(jPanelMain);
+	}
+	
+	public JTextField getInfoField()
+	{
+		return infoField;
 	}
 }

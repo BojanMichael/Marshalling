@@ -43,7 +43,7 @@ public class MyUnitsMarshaller
 		return lengthUnits;
 	}
 
-	public static void marshal(String filename) 
+	public static void marshal(String filepath) 
 	{
 		// Length Unit
 		MyUnits lengthUnits = new MyUnits();		
@@ -53,7 +53,7 @@ public class MyUnitsMarshaller
 		FileOutputStream fOS = null;
 		try 
 		{
-			fOS = new FileOutputStream(Launcher.OBJECTS_LOC+filename);
+			fOS = new FileOutputStream(filepath);
 		}
 		catch (FileNotFoundException e1) 
 		{
@@ -74,15 +74,6 @@ public class MyUnitsMarshaller
 		{
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}
-		
-		// tests, if the length unit is working
-		for(MyUnit unit : lengthUnits.getUnitList())
-		{
-			System.out.println("--------------------------------------------------------------------------");
-			System.out.println("Name in " + Launcher.DEF_LANG + "\t\t" + unit.getUnitName(Launcher.DEF_LANG));
-			System.out.println("Description in " + Launcher.DEF_LANG + "\t" + unit.getDescription(Launcher.DEF_LANG));
-			System.out.println("--------------------------------------------------------------------------");
 		}
 	}
 

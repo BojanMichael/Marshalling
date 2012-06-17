@@ -3,30 +3,21 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
-
 import unit.MyUnit;
-import unit.MyUnits;
 import xmlTools.MyUnitsMarshaller;
 
 @SuppressWarnings("serial")
 public class MenuView extends JMenuBar
 {
 	private JComboBox<String> firstUnit,secondUnit;
-	private JFrame parent;
-	public MenuView(JComboBox<String> firstUnit, JComboBox<String> secondUnit, JFrame parent)
+	private ConverterFrame parent;
+	public MenuView(JComboBox<String> firstUnit, JComboBox<String> secondUnit, ConverterFrame parent)
 	{
 		this.firstUnit = firstUnit;
 		this.secondUnit = secondUnit;
@@ -76,7 +67,8 @@ public class MenuView extends JMenuBar
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				// implement the export method
+				MyUnitsMarshaller.saveSchema();
+				parent.getInfoField().setText("exported schema to "+Launcher.SCHEMA_LOC+Launcher.SCHEMA_NAME);
 			}			
 		});
 		
@@ -88,7 +80,14 @@ public class MenuView extends JMenuBar
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				// implement the export method
+				JFileChooser jFileChooser = new JFileChooser(new File(""));
+
+				// Show save dialog
+				int fileInt = jFileChooser.showOpenDialog(parent);
+				File selFile = jFileChooser.getSelectedFile();
+				
+				MyUnitsMarshaller.marshal(selFile.toString());
+				parent.getInfoField().setText("exported list to "+selFile.toString());
 			}	
 		});
 		
@@ -115,6 +114,7 @@ public class MenuView extends JMenuBar
 					firstUnit.addItem(u.getUnitLabel());
 					secondUnit.addItem(u.getUnitLabel());
 				}
+				parent.getInfoField().setText("importet from "+selFile.toString());
 			}	
 		});
 		

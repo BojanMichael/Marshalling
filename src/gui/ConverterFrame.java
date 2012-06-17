@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +30,7 @@ public class ConverterFrame extends JFrame
 	{
 		this.setLayout(new BorderLayout());
 		JPanel layoutPanel = new JPanel();
-		layoutPanel.setLayout(new FlowLayout());
+		layoutPanel.setLayout(new GridLayout());
 		
 		firstUnit = new JComboBox<String>();
 		firstUnit.addItem("Metttter");
@@ -56,14 +57,14 @@ public class ConverterFrame extends JFrame
 		layoutPanel.add(secondUnit);
 		layoutPanel.add(outputField);
 		
-		this.add(layoutPanel,BorderLayout.CENTER);
+		this.add(layoutPanel,BorderLayout.NORTH);
 		
 		frontViewerFrame();
 	}
 	
 	private void frontViewerFrame()
 	{
-		setJMenuBar(new MenuView(firstUnit,secondUnit));
+		setJMenuBar(new MenuView(firstUnit,secondUnit,this));
 //		setLayout(new FlowLayout());
 		
 		//muess no di richtige paramter mitg�

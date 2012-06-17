@@ -2,13 +2,22 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import unit.MyUnit;
 import unit.MyUnits;
 import xmlTools.MyUnitsMarshaller;
 
@@ -16,10 +25,12 @@ import xmlTools.MyUnitsMarshaller;
 public class MenuView extends JMenuBar
 {
 	private JComboBox<String> firstUnit,secondUnit;
-	public MenuView(JComboBox<String> firstUnit, JComboBox<String> secondUnit)
+	private JFrame parent;
+	public MenuView(JComboBox<String> firstUnit, JComboBox<String> secondUnit, JFrame parent)
 	{
 		this.firstUnit = firstUnit;
 		this.secondUnit = secondUnit;
+		this.parent = parent;
 		addMenuItems();
 	}
 	
@@ -89,8 +100,21 @@ public class MenuView extends JMenuBar
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Launcher.unitList = MyUnitsMarshaller.unmarshal("default.xml");
-				firstUnit.removeAll();
+				JFileChooser jFileChooser = new JFileChooser(new File(""));
+
+				// Show save dialog
+				int fileInt = jFileChooser.showOpenDialog(parent);
+				File selFile = jFileChooser.getSelectedFile();
+
+				Launcher.unitList = MyUnitsMarshaller.unmarshal(selFile.toString());
+				
+				firstUnit.removeAllItems();
+				secondUnit.removeAllItems();
+				for(MyUnit u : Launcher.unitList.getUnitList())
+				{
+					firstUnit.addItem(u.getUnitLabel());
+					secondUnit.addItem(u.getUnitLabel());
+				}
 			}	
 		});
 		

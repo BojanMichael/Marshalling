@@ -17,14 +17,14 @@ import unit.MyUnits;
 
 public class MyUnitsMarshaller 
 {
-	public static MyUnits unmarshal(String filename) 
+	public static MyUnits unmarshal(String filepath) 
 	{
 		MyUnits lengthUnits = null;
 		try 
 		{
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			Schema schema = sf.newSchema(new File(Launcher.SCHEMA_LOC+Launcher.SCHEMA1_NAME));
-			lengthUnits = (MyUnits)Factory.loadInstance(new FileInputStream(Launcher.OBJECTS_LOC+filename), schema, MyUnits.class);
+			lengthUnits = (MyUnits)Factory.loadInstance(new FileInputStream(filepath), schema, MyUnits.class);
 		} 
 		catch (FileNotFoundException e) 
 		{

@@ -17,7 +17,9 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		try
 		{
 			for(MyUnit unit : unitList.getUnitList())
+			{
 				addItem(new ComboBoxElements(unit.getUnitLabel(), unit.getUnitName(Launcher.DEF_LANG), true));
+			}
 
 			setEnabled(true);
 			return true;
@@ -56,5 +58,5 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 			return element.getElement();
 
 		return "";
-	}	
+	}
 }

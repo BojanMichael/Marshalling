@@ -27,5 +27,11 @@ public class ComboBoxElements
 	{
 		return isVisible;
 	}
+
+	@Override
+	public String toString()
+	{
+		return element;
+	}
 	
 }

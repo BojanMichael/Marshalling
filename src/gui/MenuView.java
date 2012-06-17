@@ -15,9 +15,9 @@ import xmlTools.MyUnitsMarshaller;
 @SuppressWarnings("serial")
 public class MenuView extends JMenuBar
 {
-	private JComboBox<String> firstUnit,secondUnit;
+	private JComboBoxUnit firstUnit,secondUnit;
 	private ConverterFrame parent;
-	public MenuView(JComboBox<String> firstUnit, JComboBox<String> secondUnit, ConverterFrame parent)
+	public MenuView(JComboBoxUnit firstUnit, JComboBoxUnit secondUnit, ConverterFrame parent)
 	{
 		this.firstUnit = firstUnit;
 		this.secondUnit = secondUnit;
@@ -107,13 +107,9 @@ public class MenuView extends JMenuBar
 
 				Launcher.unitList = MyUnitsMarshaller.unmarshal(selFile.toString());
 				
-				firstUnit.removeAllItems();
-				secondUnit.removeAllItems();
-				for(MyUnit u : Launcher.unitList.getUnitList())
-				{
-					firstUnit.addItem(u.getUnitLabel());
-					secondUnit.addItem(u.getUnitLabel());
-				}
+				firstUnit.restructure(Launcher.unitList);
+				secondUnit.restructure(Launcher.unitList);
+				
 				parent.getInfoField().setText("importet from "+selFile.toString());
 			}	
 		});

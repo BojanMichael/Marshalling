@@ -21,7 +21,7 @@ public class MenuView extends JMenuBar
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
 		JMenu edit = new JMenu("Edit");
-		JMenuItem open, exit, exportXmlFile, exportSchema;
+		JMenuItem open, exit, exportXmlFile, exportSchema, importXmlFile;
 		
 		//add JMenus to the menu bar
 		menuBar.add(file);
@@ -45,6 +45,7 @@ public class MenuView extends JMenuBar
 		//add default menu items to the file menu
 		file.setMnemonic('F');
 		file.add(open);
+		file.addSeparator();
 		file.add(exit);
 		
 		
@@ -71,11 +72,25 @@ public class MenuView extends JMenuBar
 			{
 				// implement the export method
 			}	
-		});		
+		});
+		
+		importXmlFile = new JMenuItem("Import a XML - File");
+		importXmlFile.setMnemonic('I');
+		importXmlFile.setAccelerator(KeyStroke.getKeyStroke("ctrl I"));
+		importXmlFile.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				// implement the export method
+			}	
+		});
 		
 		// add links to edit
 		edit.add(exportXmlFile);
-		edit.add(exportSchema);		
+		edit.add(exportSchema);
+		edit.addSeparator();
+		edit.add(importXmlFile);
 		
 		add(menuBar);
 	}

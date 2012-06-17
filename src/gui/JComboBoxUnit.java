@@ -53,5 +53,4 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		
 		return "";		
 	}
-	
 }

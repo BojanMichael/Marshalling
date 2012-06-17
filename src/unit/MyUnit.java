@@ -8,14 +8,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import xmlAdapter.MapAdapterAsArray;
+import xmlTools.MapAdapterAsArray;
 
 import language.LanguageHandler;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(namespace="http://ch.fbi.xml.beispielEins", name="MyUnit")
-public class MyUnit implements Units
+public class MyUnit implements IMultiLingualUnit
 {
 	@XmlElement(name="unit_label", nillable=false, required=true)	
 	private String unitLabel;
@@ -99,5 +99,19 @@ public class MyUnit implements Units
 	public String toString() 
 	{
 		return "TimeUnit [UNIT_LABEL=" + unitLabel + ", FACTOR_TO_SI_UNIT=" + factorToSiUnit + ", UNIT_NAME=" + "[UnitName] " + "]";
+	}
+
+	@Override
+	public double getFactorToSIUnit() 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getFactorTo(IUnit unit) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

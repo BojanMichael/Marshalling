@@ -1,4 +1,5 @@
-public interface Unit<U extends Unit<? super U>> 
+package unit;
+public interface IUnit<U extends IUnit<? super U>> 
 {
 	//And what if we want to convert Fahrenheit? (Closure)
 	public double getFactorTo(U unit);

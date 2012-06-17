@@ -23,7 +23,7 @@ public class Launcher
 	
 	public static final String DEF_LANG = Locale.getDefault().getLanguage();
 	
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		
 		//first read file(xml) unmarshal and fill the arraylist with units ;)

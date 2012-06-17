@@ -13,6 +13,7 @@ public class MenuView extends JMenuBar
 {
 	public MenuView()
 	{
+		//myunits weitergeben
 		addMenuItems();
 	}
 	

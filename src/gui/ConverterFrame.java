@@ -21,6 +21,10 @@ import javax.swing.KeyStroke;
 
 public class ConverterFrame extends JFrame 
 {
+	
+	//create instance of myunits
+	
+	
 	public ConverterFrame()
 	{
 		frontViewerFrame();

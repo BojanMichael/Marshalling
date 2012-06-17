@@ -2,7 +2,7 @@ package unit;
 
 import language.LanguageHandler;
 
-public interface Units
+public interface IMultiLingualUnit extends IUnit
 {
 	public boolean isSIUnit();
 	public String getDescription(String language);

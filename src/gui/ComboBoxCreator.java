@@ -18,13 +18,14 @@ public class ComboBoxCreator extends JComboBox<String> //should be an object wit
 {
 	public ComboBoxCreator()
 	{
+		//MyUnits list mitgeben
 		createComoBox();
 	}
 	
 	private void createComoBox()
 	{		
-		for(MyUnit unit : getXmlUnitList().getUnitList())
-			addItem(unit.getUnitLabel());
+//		for(MyUnit unit : getXmlUnitList().getUnitList())
+//			addItem(unit.getUnitLabel());
 		
 //		addItem("Metttter");
 //		addItem("MiliMettter");
@@ -32,40 +33,40 @@ public class ComboBoxCreator extends JComboBox<String> //should be an object wit
 		setEnabled(true);
 	}
 	
-	private MyUnits getXmlUnitList()
-	{
-		MyUnits lengthUnits = null;
-		try 
-		{
-			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = sf.newSchema(new File(Launcher.SCHEMA_LOC+Launcher.SCHEMA1_NAME));
-			lengthUnits = (MyUnits)Factory.loadInstance(new FileInputStream(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME), schema, MyUnits.class);
-		} 
-		catch (FileNotFoundException e) 
-		{
-			System.out.println("! File not found ! "+e.getMessage());
-		} 
-		catch (JAXBException e) 
-		{
-			System.out.println(e.getCause());
-			System.out.println("! JAXB Exception ! "+e.getMessage());
-		} 
-		catch (SAXException e) 
-		{
-			System.out.println("! SAX Exception ! "+e.getMessage());
-		}
-
-		
-		return lengthUnits;
-		
-//		if(lengthUnits != null)
+//	private MyUnits getXmlUnitList()
+//	{
+//		MyUnits lengthUnits = null;
+//		try 
 //		{
-//			for(MyUnit el : lengthUnits.getUnitList())
-//			{
-//				System.out.println("--------------------------------------------------------------------------");
-//				System.out.println(Launcher.DEF_LANG+": ["+el.getUnitLabel()+"] "+el.getUnitName(Launcher.DEF_LANG)+" - "+el.getDescription(Launcher.DEF_LANG));
-//				System.out.println("--------------------------------------------------------------------------");
-//			}
+//			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+//			Schema schema = sf.newSchema(new File(Launcher.SCHEMA_LOC+Launcher.SCHEMA1_NAME));
+//			lengthUnits = (MyUnits)Factory.loadInstance(new FileInputStream(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME), schema, MyUnits.class);
+//		} 
+//		catch (FileNotFoundException e) 
+//		{
+//			System.out.println("! File not found ! "+e.getMessage());
+//		} 
+//		catch (JAXBException e) 
+//		{
+//			System.out.println(e.getCause());
+//			System.out.println("! JAXB Exception ! "+e.getMessage());
+//		} 
+//		catch (SAXException e) 
+//		{
+//			System.out.println("! SAX Exception ! "+e.getMessage());
 //		}
-	}
+//
+//		
+//		return lengthUnits;
+//		
+////		if(lengthUnits != null)
+////		{
+////			for(MyUnit el : lengthUnits.getUnitList())
+////			{
+////				System.out.println("--------------------------------------------------------------------------");
+////				System.out.println(Launcher.DEF_LANG+": ["+el.getUnitLabel()+"] "+el.getUnitName(Launcher.DEF_LANG)+" - "+el.getDescription(Launcher.DEF_LANG));
+////				System.out.println("--------------------------------------------------------------------------");
+////			}
+////		}
+//	}
 }

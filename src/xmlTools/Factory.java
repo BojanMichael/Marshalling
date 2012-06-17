@@ -1,3 +1,4 @@
+package xmlTools;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +12,6 @@ import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 
-import xmlAdapter.MapAdapterAsArray;
 
 public class Factory 
 {

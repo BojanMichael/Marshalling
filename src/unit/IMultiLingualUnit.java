@@ -2,6 +2,7 @@ package unit;
 
 import language.LanguageHandler;
 
+@SuppressWarnings("rawtypes")
 public interface IMultiLingualUnit extends IUnit
 {
 	public boolean isSIUnit();

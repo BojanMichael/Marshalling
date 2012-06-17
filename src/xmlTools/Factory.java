@@ -12,7 +12,6 @@ import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 
-
 public class Factory 
 {
 	public static void saveInstance(OutputStream outputStream, Object instance) throws JAXBException, IOException 
@@ -30,9 +29,6 @@ public class Factory
 		unmarshaller.setSchema(schema);
 		MapAdapterAsArray adapter = new MapAdapterAsArray();
 		unmarshaller.setAdapter(MapAdapterAsArray.class, adapter);
-//		unmarshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,schemaURL+" "+schemaName);
-//		unmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
-//		System.out.println("schema: "+unmarshaller.getSchema());
 		Object instance = unmarshaller.unmarshal(inputStream);
 		return instance;
 	}

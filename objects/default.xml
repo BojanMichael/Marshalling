@@ -1,49 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <myUnits xmlns:ns2="http://ch.fbi.xml.beispielEins">
-    <MyUnitList>
-        <unit_label>km</unit_label>
-        <factor_to_SI_unit>1000.0</factor_to_SI_unit>
-        <unit_name>false</unit_name>
-        <languageMap>
-            <item>
-                <languageSet>
-                    <description>Es sind Kilometer</description>
-                    <language>de</language>
-                    <name>Kilometer</name>
-                </languageSet>
-                <language>de</language>
-            </item>
-            <item>
-                <languageSet>
-                    <description>1000 times a meter</description>
-                    <language>en</language>
-                    <name>kilometer</name>
-                </languageSet>
-                <language>en</language>
-            </item>
-        </languageMap>
-    </MyUnitList>
-    <MyUnitList>
-        <unit_label>m</unit_label>
-        <factor_to_SI_unit>1.0</factor_to_SI_unit>
-        <unit_name>true</unit_name>
-        <languageMap>
-            <item>
-                <languageSet>
-                    <description>Ein Meter ist knapp die Hälfte einer Körperkrösse</description>
-                    <language>de</language>
-                    <name>Meter</name>
-                </languageSet>
-                <language>de</language>
-            </item>
-            <item>
-                <languageSet>
-                    <description>Meters are not Inches</description>
-                    <language>en</language>
-                    <name>meter</name>
-                </languageSet>
-                <language>en</language>
-            </item>
-        </languageMap>
-    </MyUnitList>
+	<MyUnitList>
+		<unit_label>km</unit_label>
+		<factor_to_SI_unit>1000.0</factor_to_SI_unit>
+		<unit_name>false</unit_name>
+		<languageMap>
+			<item>
+				<languageSet>
+					<description>Es sind Kilometer</description>
+					<language>de</language>
+					<name>Kilometer</name>
+				</languageSet>
+				<language>de</language>
+			</item>
+			<item>
+				<languageSet>
+					<description>1000 times a meter</description>
+					<language>en</language>
+					<name>kilometer</name>
+				</languageSet>
+				<language>en</language>
+			</item>
+		</languageMap>
+	</MyUnitList>
+	<MyUnitList>
+		<unit_label>m</unit_label>
+		<factor_to_SI_unit>1.0</factor_to_SI_unit>
+		<unit_name>true</unit_name>
+		<languageMap>
+			<item>
+				<languageSet>
+					<description>Ein Meter ist knapp die Hälfte einer Körperkrösse</description>
+					<language>de</language>
+					<name>Meter</name>
+				</languageSet>
+				<language>de</language>
+			</item>
+			<item>
+				<languageSet>
+					<description>Meters are not Inches</description>
+					<language>en</language>
+					<name>meter</name>
+				</languageSet>
+				<language>en</language>
+			</item>
+		</languageMap>
+	</MyUnitList>
+	<MyUnitList>
+		<unit_label>mm</unit_label>
+		<factor_to_SI_unit>0.001</factor_to_SI_unit>
+		<unit_name>false</unit_name>
+		<languageMap>
+			<item>
+				<languageSet>
+					<description>Ein sehr kleines Mass</description>
+					<language>de</language>
+					<name>Milimeter</name>
+				</languageSet>
+				<language>de</language>
+			</item>
+			<item>
+				<languageSet>
+					<description>A very small unit</description>
+					<language>en</language>
+					<name>milimeter</name>
+				</languageSet>
+				<language>en</language>
+			</item>
+		</languageMap>
+	</MyUnitList>
+	<MyUnitList>
+		<unit_label>in</unit_label>
+		<factor_to_SI_unit>0.0254</factor_to_SI_unit>
+		<unit_name>false</unit_name>
+		<languageMap>
+			<item>
+				<languageSet>
+					<description>Zoll und so</description>
+					<language>de</language>
+					<name>Zoll</name>
+				</languageSet>
+				<language>de</language>
+			</item>
+			<item>
+				<languageSet>
+					<description>some unit</description>
+					<language>en</language>
+					<name>inches</name>
+				</languageSet>
+				<language>en</language>
+			</item>
+		</languageMap>
+	</MyUnitList>
 </myUnits>

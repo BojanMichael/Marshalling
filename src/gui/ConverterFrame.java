@@ -4,10 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,6 +14,7 @@ import xmlTools.MyUnitsMarshaller;
 
 public class ConverterFrame extends JFrame 
 {
+	private static final long serialVersionUID = 1970743664009863658L;
 	private JComboBoxUnit firstUnit,secondUnit;
 	private JTextField inputField,outputField,infoField;
 	private double input;
@@ -29,31 +27,11 @@ public class ConverterFrame extends JFrame
 		layoutPanel.setLayout(new GridLayout());
 
 		Launcher.unitList = MyUnitsMarshaller.unmarshal(Launcher.OBJECTS_LOC+Launcher.OBJECT_NAME);
-		
+
 		firstUnit = new JComboBoxUnit();
 		secondUnit = new JComboBoxUnit();
 
 		inputField = new JTextField("input a number");
-		inputField.addKeyListener(new KeyListener() 
-		{
-			@Override
-			public void keyTyped(KeyEvent arg0) 
-			{	
-				try 
-				{
-					input = Double.parseDouble(inputField.getText());
-				}
-				catch(NumberFormatException e)
-				{
-					System.out.println(e.getMessage()+" "+ e.getCause());
-					input = 0;
-				}
-			}
-			@Override
-			public void keyReleased(KeyEvent arg0) {}
-			@Override
-			public void keyPressed(KeyEvent arg0) {}
-		});
 
 		outputField = new JTextField("output");
 		outputField.setEditable(false);
@@ -76,8 +54,17 @@ public class ConverterFrame extends JFrame
 						unit2 = u;
 					}
 				}
-				input = Double.parseDouble(inputField.getText());
-				outputField.setText(String.valueOf((unit1.getFactorTo(unit2)*input)));
+				
+				try 
+				{
+					input = Double.parseDouble(inputField.getText());
+				}
+				catch(NumberFormatException ex)
+				{
+					System.out.println(ex.getMessage()+" "+ ex.getCause());
+					input = 0;
+				}
+				outputField.setText(String.valueOf(Math.round(unit1.getFactorTo(unit2)*input*10000.0)/10000.0));
 			}
 		});
 
@@ -86,37 +73,16 @@ public class ConverterFrame extends JFrame
 		layoutPanel.add(secondUnit);
 		layoutPanel.add(outputField);
 		layoutPanel.add(submit);
-		
-		
-		infoField = new JTextField("Welcome");
+
+
+		infoField = new JTextField("Welcome to "+Launcher.APP_NAME);
 
 		this.add(layoutPanel,BorderLayout.NORTH);
 		this.add(infoField, BorderLayout.CENTER);
-		
-		frontViewerFrame();
-	}
 
-	private void frontViewerFrame()
-	{
 		setJMenuBar(new MenuView(firstUnit, secondUnit, this));
-		//		setLayout(new FlowLayout());
-
-		//muess no di richtige paramter mitg�
-		//add(new ComboBoxCreator());
-
-
-		//		setLayout(new FlowLayout());
-		//		//main panel
-		//		JPanel jPanelMain = new JPanel(new BorderLayout());
-		//		
-		//		//menupanel
-		//		jPanelMain.add(new MenuView().getComponent(), BorderLayout.NORTH);
-		//		jPanelMain.add(new JLabel("Testchen"), BorderLayout.CENTER);
-		//		
-		//		//add main panel to the gui
-		//		add(jPanelMain);
 	}
-	
+
 	public JTextField getInfoField()
 	{
 		return infoField;

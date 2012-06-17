@@ -1,17 +1,13 @@
 package unit;
 
 import java.util.HashMap;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import xmlTools.MapAdapterAsArray;
-
 import language.LanguageHandler;
-
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(namespace="http://ch.fbi.xml.beispielEins", name="MyUnit")
@@ -47,14 +43,12 @@ public class MyUnit implements IMultiLingualUnit
 			languageHandlerHashMap.put(lang.getLanguage(), lang);
 	}
 
-	
 	@SuppressWarnings("unused")
 	private MyUnit()
 	{
 		//only for JAXB -> Almost magic
 	}
 
-	//	@Override
 	public String getUnitLabel() 
 	{
 		return unitLabel;
@@ -102,6 +96,7 @@ public class MyUnit implements IMultiLingualUnit
 		return factorToSiUnit;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public double getFactorTo(IUnit unit) 
 	{

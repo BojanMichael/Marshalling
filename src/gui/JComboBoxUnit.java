@@ -1,10 +1,6 @@
 package gui;
 
-import java.util.ArrayList;
-import java.util.Locale;
 import javax.swing.JComboBox;
-import javax.swing.event.ListDataListener;
-
 import unit.MyUnit;
 import unit.MyUnits;
 
@@ -13,21 +9,21 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 {
 	public JComboBoxUnit(MyUnits unitList)
 	{
-		createComboBox(unitList.getUnitList());
+		createComboBox(unitList);
 	}
-	
+
 	public JComboBoxUnit()
 	{
-		
+		// default file laden
 	}
-	
-	private boolean createComboBox(ArrayList<MyUnit> unitList)
+
+	private boolean createComboBox(MyUnits unitList)
 	{
 		try
 		{
-			for(MyUnit unit : unitList)
+			for(MyUnit unit : unitList.getUnitList())
 				addItem(new ComboBoxElements(unit.getUnitLabel(), unit.getUnitName(Launcher.DEF_LANG), true));
-			
+
 			setEnabled(true);
 			return true;
 		}
@@ -35,38 +31,26 @@ public class JComboBoxUnit extends JComboBox<ComboBoxElements> //should be an ob
 		{
 			System.out.println(ex.getMessage());
 		}
-		
-		
+
+
 		setEnabled(false);
-		return false;		
+		return false;	
 	}
-	
+
 	public boolean restructure(MyUnits unitList)
 	{
-		removeAllItems();		
-		return createComboBox(unitList.getUnitList());
+		removeAllItems();	
+		return createComboBox(unitList);
 	}
-	
+
 	@Override
 	public Object getSelectedItem()
 	{
 		ComboBoxElements element = (ComboBoxElements) super.getSelectedItem();
-		
+
 		if(element != null)
 			return element.getElement();
-		else
-			return null;
+
+		return "";	
 	}
-	
-	@Override
-	public String getName() 
-	{
-		ComboBoxElements element = (ComboBoxElements) super.getSelectedItem();
-		
-		if(element != null)
-			return element.getElement();
-		else
-			return null;
-	}
-	
 }

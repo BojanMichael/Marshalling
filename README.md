@@ -1,4 +1,4 @@
 Marshalling
 ===========
 
-Übung für König2
+Übung fürs Modul "Konzepte und Methoden der Programmierung"

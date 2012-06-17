@@ -47,6 +47,7 @@ public class MyUnit implements IMultiLingualUnit
 			languageHandlerHashMap.put(lang.getLanguage(), lang);
 	}
 
+	
 	@SuppressWarnings("unused")
 	private MyUnit()
 	{
